@@ -8,8 +8,12 @@
     <h1></h1>
     <h2>Age: </h2>
     <script>
-        document.querySelector('h1').innerText = data.name;
-        document.querySelector('h2').innerText += data.age;
+        fetch('/' + userId)
+        .then(req => req.json())
+        .then((data) => {
+            document.querySelector('h1').innerText = data.name;
+            document.querySelector('h2').innerText += data.age;
+        });
     </script>
 </body>
 

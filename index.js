@@ -23,11 +23,13 @@ app.get('/create/:id', (req, res) => {
     const htmlFile = fs.readFileSync('public/create.html');
     const $ = cheerio.load(htmlFile);
 
-    const data = users[id];
-
-    $('head').append('<script>const data = ' + JSON.stringify(data) + ';</script>');
+    $('head').append('<script>const userId = ' + id + ';</script>');
 
     res.send($.html());
+});
+
+app.get('/:id', (req, res) => {
+    res.send(users[req.params.id]);
 });
 
 app.listen(8080);
