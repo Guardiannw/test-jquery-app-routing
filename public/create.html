@@ -8,6 +8,9 @@
     <h1></h1>
     <h2>Age: </h2>
     <script>
+        const url = window.location.href;
+        const userId = url.match(/\/([^/]+)$/)[1];
+
         fetch('/' + userId)
         .then(req => req.json())
         .then((data) => {

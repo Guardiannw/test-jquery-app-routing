@@ -19,13 +19,7 @@ const users = {
 app.use(express.static('public', {extensions: ['html', 'htm']}));
 
 app.get('/create/:id', (req, res) => {
-    const id = req.params.id;
-    const htmlFile = fs.readFileSync('public/create.html');
-    const $ = cheerio.load(htmlFile);
-
-    $('head').append('<script>const userId = ' + id + ';</script>');
-
-    res.send($.html());
+    res.sendFile('create.html' ,{root: __dirname + '/public'});
 });
 
 app.get('/:id', (req, res) => {
